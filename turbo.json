@@ -1,0 +1,51 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "ui": "tui",
+  "concurrency": "20",
+  "tasks": {
+    "topo": {
+      "dependsOn": ["^topo"]
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "format": {
+      "outputs": [".cache/.prettiercache"],
+      "outputLogs": "new-only"
+    },
+    "lint": {
+      "dependsOn": ["^topo", "^build"]
+    },
+    "typecheck": {
+      "dependsOn": ["^topo", "^build"]
+    },
+    "clean": {
+      "cache": false
+    },
+    "//#clean": {
+      "cache": false
+    },
+    "ui-add": {
+      "cache": false,
+      "interactive": true
+    },
+    "test": {
+      "dependsOn": ["^topo"],
+      "cache": false
+    }
+  },
+  "globalEnv": [
+    "DATABASE_URL",
+    "AUTH_SECRET",
+    "PORT",
+    "PLAYWRIGHT_BASE_URL",
+    "LOG_LEVEL",
+    "NEXT_PUBLIC_APP_URL"
+  ],
+  "globalPassThroughEnv": ["NODE_ENV", "CI", "npm_lifecycle_event"]
+}

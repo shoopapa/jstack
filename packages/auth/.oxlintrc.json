@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "extends": [
+    "../../tooling/oxlint/base.json",
+    "../../tooling/oxlint/restrict-env.json"
+  ],
+  "ignorePatterns": ["**/*.config.*", "**/env.ts"]
+}

@@ -1,0 +1,62 @@
+{
+  "name": "@jstack/db",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/src/db.d.ts",
+      "default": "./src/db.ts"
+    },
+    "./types": {
+      "types": "./dist/src/types.d.ts",
+      "default": "./src/types.ts"
+    }
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "local:up": "docker compose -p jstack -f ../../docker-compose.yml up -d --wait",
+    "local:down": "docker compose -p jstack -f ../../docker-compose.yml down",
+    "local:wipe": "docker compose -p jstack -f ../../docker-compose.yml down -v",
+    "test:up": "docker compose -p jstack-test -f ../../docker-compose.test.yml up -d --wait",
+    "test:down": "docker compose -p jstack-test -f ../../docker-compose.test.yml down -v",
+    "nuke": "tsx scripts/nuke.ts",
+    "nuke:empty": "tsx scripts/nuke-empty.ts",
+    "nuke:root": "tsx scripts/nuke-root.ts",
+    "codegen": "pnpm with-env pnpm kysely-codegen --out-file ./src/types.ts && prettier --write ./src/types.ts",
+    "migrate:latest": "pnpm with-env pnpm tsx src/migrate.ts latest",
+    "migrate:test": "pnpm with-env:test pnpm tsx src/migrate.ts latest",
+    "migrate:up": "pnpm with-env pnpm tsx src/migrate.ts up",
+    "migrate:down": "pnpm with-env pnpm tsx src/migrate.ts down",
+    "migrate:bottom": "pnpm with-env pnpm tsx src/migrate.ts bottom",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "dev": "tsc --watch",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "oxlint --type-aware",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "with-env": "dotenv -e ../../.env --",
+    "with-env:test": "dotenv -e ../../.env.test --"
+  },
+  "dependencies": {
+    "@t3-oss/env-nextjs": "catalog:t3-oss",
+    "cmd-ts": "^0.15.0",
+    "kysely": "catalog:pg",
+    "pg": "catalog:pg",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@jstack/oxlint-config": "workspace:*",
+    "@jstack/prettier-config": "workspace:*",
+    "@jstack/tsconfig": "workspace:*",
+    "@types/pg": "catalog:pg",
+    "dotenv-cli": "catalog:",
+    "kysely-codegen": "catalog:pg",
+    "oxlint": "catalog:",
+    "oxlint-tsgolint": "catalog:",
+    "prettier": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "catalog:"
+  },
+  "prettier": "@jstack/prettier-config"
+}

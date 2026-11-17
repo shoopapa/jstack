@@ -1,0 +1,38 @@
+# dependencies
+node_modules
+.pnp
+.pnp.js
+.pnpm-store/
+
+# testing
+coverage
+apps/e2e/.auth/
+apps/e2e/playwright-report/
+apps/e2e/test-results/
+
+# next.js
+.next/
+out/
+next-env.d.ts
+
+# production
+build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+.pnpm-debug.log*
+
+# local env files
+.env
+.env*.local
+
+# typescript
+dist/
+.cache
+
+# turbo
+.turbo

@@ -1,0 +1,30 @@
+{
+  "name": "@jstack/logger",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "pino": "catalog:"
+  },
+  "scripts": {
+    "dev": "tsc --watch",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "oxlint --type-aware",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@jstack/oxlint-config": "workspace:*",
+    "@jstack/prettier-config": "workspace:*",
+    "@jstack/tsconfig": "workspace:*",
+    "oxlint": "catalog:",
+    "oxlint-tsgolint": "catalog:",
+    "prettier": "catalog:",
+    "typescript": "catalog:"
+  },
+  "prettier": "@jstack/prettier-config"
+}

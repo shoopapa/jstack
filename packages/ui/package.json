@@ -1,0 +1,60 @@
+{
+  "name": "@jstack/ui",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    "./*": "./src/components/*.tsx",
+    "./lib/*": "./src/lib/*.ts",
+    "./styles/*": "./src/styles/*.css",
+    ".": "./src/lib/utils.ts"
+  },
+  "license": "MIT",
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "oxlint --type-aware",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "ui-add": "pnpm dlx shadcn@latest add && prettier src --write --list-different"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "catalog:",
+    "@radix-ui/react-avatar": "^1.3.1",
+    "@radix-ui/react-checkbox": "^1.4.1",
+    "@radix-ui/react-dialog": "^1.3.1",
+    "@radix-ui/react-icons": "catalog:",
+    "@radix-ui/react-label": "^2.1.17",
+    "@radix-ui/react-popover": "^1.3.1",
+    "@radix-ui/react-select": "^2.4.1",
+    "@radix-ui/react-separator": "^1.2.0",
+    "@radix-ui/react-slot": "^1.5.0",
+    "@radix-ui/react-tooltip": "^1.4.1",
+    "@teispace/next-themes": "catalog:",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "catalog:",
+    "next": "catalog:",
+    "radix-ui": "^1.8.1",
+    "react-hook-form": "catalog:",
+    "sonner": "catalog:",
+    "tailwind-merge": "^3.7.0",
+    "tailwindcss": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@jstack/oxlint-config": "workspace:*",
+    "@jstack/prettier-config": "workspace:*",
+    "@jstack/tsconfig": "workspace:*",
+    "@types/react": "catalog:react19",
+    "oxlint": "catalog:",
+    "oxlint-tsgolint": "catalog:",
+    "prettier": "catalog:",
+    "react": "catalog:react19",
+    "typescript": "catalog:"
+  },
+  "peerDependencies": {
+    "react": "catalog:react19",
+    "zod": "catalog:"
+  },
+  "prettier": "@jstack/prettier-config"
+}

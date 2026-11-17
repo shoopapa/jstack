@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    /** Base Options */
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "types": ["node"],
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+
+    /**
+     * Keep TSC performant in monorepos.
+     * `incremental` is intentionally disabled: the typecheck (`--noEmit`) and
+     * build (declaration emit) tasks share one tsconfig and therefore one
+     * tsBuildInfoFile; when Turbo runs them concurrently they clobber that
+     * snapshot and the TS7 (Go) incremental reader panics. Turbo already caches
+     * these tasks by content hash, and the native compiler checks the largest
+     * package in ~0.15s, so incremental buys nothing here.
+     */
+    "disableSourceOfProjectReferenceRedirect": true,
+
+    /** Strictness */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "checkJs": true,
+
+    /** Transpile using Bundler (not tsc) */
+    "module": "Preserve",
+    "moduleResolution": "Bundler",
+    "allowImportingTsExtensions": true,
+    "noEmit": true
+  },
+  "exclude": ["node_modules", "build", "dist", ".next", ".expo", "cdk.out"]
+}

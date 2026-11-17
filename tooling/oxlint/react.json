@@ -1,0 +1,32 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["react"],
+  "rules": {
+    "react/rules-of-hooks": "error",
+    "react/exhaustive-deps": "warn"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "globals": {
+        "React": "writable"
+      },
+      "rules": {
+        "react/react-in-jsx-scope": "off",
+        "react/error-boundaries": "error",
+        "react/globals": "error",
+        "react/immutability": "error",
+        "react/incompatible-library": "error",
+        "react/preserve-manual-memoization": "error",
+        "react/purity": "error",
+        "react/refs": "error",
+        "react/set-state-in-effect": "error",
+        "react/set-state-in-render": "error",
+        "react/static-components": "error",
+        "react/use-memo": "error",
+        "react/unsupported-syntax": "error",
+        "react/void-use-memo": "error"
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod";
+
+export const env = createEnv({
+  server: {
+    AUTH_SECRET: z.string().min(32),
+    NODE_ENV: z.enum(["development", "production", "test"]).optional(),
+  },
+  experimental__runtimeEnv: {},
+  skipValidation:
+    !!process.env.CI || process.env.npm_lifecycle_event === "lint",
+});

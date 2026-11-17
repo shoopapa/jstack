@@ -1,0 +1,5 @@
+{
+  "extends": "@jstack/tsconfig/internal-package.json",
+  "include": ["src", "migrations", "scripts"],
+  "exclude": ["node_modules"]
+}

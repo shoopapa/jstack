@@ -1,0 +1,39 @@
+{
+  "name": "@jstack/auth",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./env": "./src/env.ts",
+    "./permissions": "./src/permissions.ts"
+  },
+  "license": "MIT",
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "oxlint --type-aware",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@jstack/db": "workspace:*",
+    "@jstack/logger": "workspace:*",
+    "@t3-oss/env-nextjs": "catalog:t3-oss",
+    "better-auth": "catalog:better-auth",
+    "next": "catalog:",
+    "react": "catalog:react19",
+    "react-dom": "catalog:react19",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@jstack/oxlint-config": "workspace:*",
+    "@jstack/prettier-config": "workspace:*",
+    "@jstack/tsconfig": "workspace:*",
+    "@types/react": "catalog:react19",
+    "oxlint": "catalog:",
+    "oxlint-tsgolint": "catalog:",
+    "prettier": "catalog:",
+    "typescript": "catalog:"
+  },
+  "prettier": "@jstack/prettier-config"
+}

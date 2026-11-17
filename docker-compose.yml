@@ -1,0 +1,22 @@
+# Dev stack. `pnpm --filter @jstack/db local:up` (or any `nuke*` script).
+# Host port 5300 keeps it clear of a default Postgres on 5432.
+services:
+  postgres:
+    image: postgres:16
+    container_name: jstack-db
+    ports:
+      - "5300:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - jstack-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      interval: 1s
+      timeout: 3s
+      retries: 60
+
+volumes:
+  jstack-db-data:

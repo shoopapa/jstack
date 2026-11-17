@@ -1,0 +1,30 @@
+{
+  "name": "@jstack/e2e",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "pnpm with-env playwright test",
+    "test:ui": "pnpm with-env playwright test --ui",
+    "test:headed": "pnpm with-env playwright test --headed",
+    "install-browsers": "playwright install --with-deps chromium",
+    "with-env": "dotenv -e ../../.env.test --",
+    "clean": "git clean -xdf .cache .turbo node_modules",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "oxlint --type-aware",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@jstack/db": "workspace:*",
+    "@jstack/oxlint-config": "workspace:*",
+    "@jstack/prettier-config": "workspace:*",
+    "@jstack/tsconfig": "workspace:*",
+    "@playwright/test": "^1.64.0",
+    "dotenv-cli": "catalog:",
+    "oxlint": "catalog:",
+    "oxlint-tsgolint": "catalog:",
+    "prettier": "catalog:",
+    "typescript": "catalog:"
+  },
+  "prettier": "@jstack/prettier-config"
+}

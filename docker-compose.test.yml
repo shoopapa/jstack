@@ -1,0 +1,28 @@
+# Test stack — deliberately separate from docker-compose.yml so a test run can
+# never touch dev data or fight the dev server for a port. Different project
+# name, container, host port, and database.
+#
+# Host ports are the dev port + 20000 (3000→23000 app, 5300→25300 Postgres):
+# far from the usual dev range, but below 32768 where Linux starts handing out
+# ephemeral ports.
+#
+# The data directory is a tmpfs, so `pnpm test:down` is a real reset.
+name: jstack-test
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: jstack-test-db
+    ports:
+      - "25300:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: jstack_test
+    tmpfs:
+      - /var/lib/postgresql/data:size=1g
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d jstack_test"]
+      interval: 1s
+      timeout: 3s
+      retries: 60
