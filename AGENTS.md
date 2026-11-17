@@ -1,6 +1,6 @@
 # Repository Guidance
 
-Canonical instructions for coding agents. `CLAUDE.md` points here.
+Canonical instructions for coding agents.
 
 ## Layout
 
